@@ -13,7 +13,7 @@ export class Chapter {
   route = '';
 }
 
-export class Book extends LearningObject {
+export class Lab extends LearningObject {
   directories: Array<string> = [];
   chapters: Array<Chapter> = [];
 
@@ -66,19 +66,5 @@ export class Book extends LearningObject {
       copyFolder(directory, labPath);
     });
     sh.cd('..');
-  }
-
-  toJson(url: string, jsonObj: any) {
-    super.toJson(url, jsonObj);
-    jsonObj.route = `#lab/${url}`;
-    jsonObj.los = [];
-    this.chapters.forEach((chapter) => {
-      let jsonChapter: any = {};
-      jsonChapter.title = chapter.title;
-      jsonChapter.shortTitle = chapter.shortTitle;
-      jsonChapter.contentMd = chapter.contentMd;
-      jsonChapter.route = `${jsonObj.route}/${chapter.shortTitle}`;
-      jsonObj.los.push(jsonChapter);
-    });
   }
 }

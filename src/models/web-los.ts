@@ -35,11 +35,6 @@ export class PanelVideo extends WebLearningObject {
   publish(path: string): void {
     copyResource(this.folder!, path);
   }
-
-  toJson(url: string, jsonObj: any) {
-    super.toJson(url, jsonObj);
-    jsonObj.route = `#video/${url}/${this.link}`;
-  }
 }
 
 export class Git extends WebLearningObject {

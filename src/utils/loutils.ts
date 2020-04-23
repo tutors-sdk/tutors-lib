@@ -6,7 +6,7 @@ import * as sh from 'shelljs';
 import { Archive, PanelTalk, Talk } from '../models/los';
 import { LearningObject } from '../models/lo';
 import { Course } from '../models/course';
-import { Book } from '../models/lab';
+import { Lab } from '../models/lab';
 import { Topic, Unit } from '../models/topic';
 import { Git, PanelVideo, Video, Web } from '../models/web-los';
 
@@ -31,7 +31,7 @@ export function reapLos({ parent }: { parent: LearningObject }): Array<LearningO
   );
   los = los.concat(
     reapLoType('book*', parent, (parent) => {
-      return new Book(parent);
+      return new Lab(parent);
     })
   );
   los = los.concat(

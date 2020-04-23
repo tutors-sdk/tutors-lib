@@ -39,11 +39,6 @@ export class Talk extends DiscreteLearningObject {
     this.lotype = 'talk';
     this.reap('*.pdf');
   }
-  toJson(url: string, jsonObj: any) {
-    super.toJson(url, jsonObj);
-    jsonObj.pdf = `https://${url}/${this.link}`;
-    jsonObj.route = `#talk/${url}/${this.link}`;
-  }
 }
 
 export class PanelTalk extends DiscreteLearningObject {
@@ -52,11 +47,6 @@ export class PanelTalk extends DiscreteLearningObject {
     this.lotype = 'paneltalk';
     this.reap('*.pdf');
   }
-  toJson(url: string, jsonObj: any) {
-    super.toJson(url, jsonObj);
-    jsonObj.pdf = `https://${url}/${this.link}`;
-    jsonObj.route = `#talk/${url}/${this.link}`;
-  }
 }
 
 export class Archive extends DiscreteLearningObject {
@@ -64,10 +54,5 @@ export class Archive extends DiscreteLearningObject {
     super(parent);
     this.lotype = 'archive';
     this.reap('*.zip');
-  }
-
-  toJson(url: string, jsonObj: any) {
-    super.toJson(url, jsonObj);
-    jsonObj.route = `https://${url}/${this.link}`;
   }
 }

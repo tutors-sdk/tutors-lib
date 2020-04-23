@@ -49,21 +49,5 @@ export class Course extends LearningObject {
     }
     copyFileToFolder(this.img!, path);
     publishLos(path, this.los);
-
-    let courseJson: any = {};
-    this.toJson('{{COURSEURL}}/', courseJson);
-    writeFile(path, 'tutors.json', JSON.stringify(courseJson));
-  }
-
-  toJson(url: string, jsonObj: any) {
-    super.toJson(url, jsonObj);
-    jsonObj.version = version;
-    jsonObj.los = [];
-    this.los.forEach((lo) => {
-      let topicObj: any = {};
-      lo.toJson(url, topicObj);
-      jsonObj.los.push(topicObj);
-    });
-    jsonObj.enrollment = this.enrollment;
   }
 }

@@ -32,38 +32,11 @@ export class Topic extends LearningObject {
     publishLos(topicPath, this.los);
     sh.cd('..');
   }
-
-  toJson(url: string, jsonObj: any) {
-    const topicUrl = `${url}${this.folder}`;
-    super.toJson(topicUrl, jsonObj);
-    jsonObj.route = `#topic/${topicUrl}`;
-    jsonObj.los = [];
-    this.los.forEach((lo) => {
-      let loJson: any = {};
-      lo.toJson(`${topicUrl}/${lo.folder}`, loJson);
-      jsonObj.los.push(loJson);
-    });
-  }
 }
 
 export class Unit extends Topic {
   constructor(parent: LearningObject) {
     super(parent);
     this.lotype = 'unit';
-  }
-
-  // publish(path: string): void {
-  //   console.log('::', this.title);
-  //   sh.cd(this.folder!);
-  //   const topicPath = path + '/' + this.folder;
-  //   copyFileToFolder(this.img!, topicPath);
-  //   publishLos(topicPath, this.los);
-  //   sh.cd('..');
-  // }
-
-  toJson(url: string, jsonObj: any) {
-    url = url.substring(0, url.lastIndexOf('/')) + '/';
-    super.toJson(url, jsonObj);
-    jsonObj.route = `#topic/${url}`;
   }
 }
