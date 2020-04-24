@@ -1,5 +1,5 @@
 {
-  "name": "@tutors-sdk/tutors-lib",
+  "name": "@tutors-sdk/tutors-lib-dev",
   "version": "0.1.2",
   "description": "Static course web site generator - core library",
   "scripts": {
