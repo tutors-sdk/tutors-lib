@@ -6,6 +6,12 @@ import { copyFileToFolder } from '../utils/futils';
 
 export class Topic extends LearningObject {
   los: Array<LearningObject> = [];
+  units: Array<LearningObject>;
+  panelVideos: Array<LearningObject>;
+  panelTalks: Array<LearningObject>;
+  standardLos: Array<LearningObject>;
+  allLos: LearningObject[] = [];
+
   constructor(parent: LearningObject) {
     super(parent);
     this.los = reapLos({ parent: this });
@@ -13,6 +19,13 @@ export class Topic extends LearningObject {
     this.link = 'index.html';
     this.lotype = 'topic';
     this.setDefaultImage();
+
+    this.los.forEach((lo) => this.allLos.push(lo));
+
+    this.units = this.los.filter((lo) => lo.lotype == 'unit');
+    this.panelVideos = this.los.filter((lo) => lo.lotype == 'panelvideo');
+    this.panelTalks = this.los.filter((lo) => lo.lotype == 'paneltalk');
+    this.standardLos = this.los.filter((lo) => lo.lotype !== 'unit' && lo.lotype !== 'panelvideo' && lo.lotype !== 'paneltalk');
   }
 
   setDefaultImage(): void {
@@ -35,8 +48,11 @@ export class Topic extends LearningObject {
 }
 
 export class Unit extends Topic {
+  standardLos: Array<LearningObject> = [];
+
   constructor(parent: LearningObject) {
     super(parent);
     this.lotype = 'unit';
+    this.standardLos = this.los.filter((lo) => lo.lotype !== 'panelvideo');
   }
 }
