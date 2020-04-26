@@ -1,14 +1,21 @@
 import { LearningObject } from './lo';
 import { Properties } from '../utils/properties';
-import { publishLos, reapLos } from '../utils/loutils';
+import { findLos, publishLos, reapLos } from '../utils/loutils';
 import * as fs from 'fs';
 import { copyFileToFolder, getCurrentDirectory, readEnrollment, writeFile } from '../utils/futils';
 import { Topic } from './topic';
 const version = require('../../package.json').version;
 
+interface LoWall {
+  course: Course;
+  isWall: boolean;
+  los: Array<LearningObject>;
+}
+
 export class Course extends LearningObject {
   enrollment?: Properties;
   los: Array<LearningObject> = [];
+  walls: LoWall[] = [];
 
   insertCourseRef(los: Array<LearningObject>): void {
     los.forEach((lo) => {
@@ -40,6 +47,12 @@ export class Course extends LearningObject {
         console.log(`Enrolment file detected with ${this.enrollment.students.length} students`);
       }
     }
+    this.walls.push({ course: this, isWall: true, los: findLos(this.los, 'talk') });
+    this.walls.push({ course: this, isWall: true, los: findLos(this.los, 'lab') });
+    this.walls.push({ course: this, isWall: true, los: findLos(this.los, 'video') });
+    this.walls.push({ course: this, isWall: true, los: findLos(this.los, 'panelvideo') });
+    this.walls.push({ course: this, isWall: true, los: findLos(this.los, 'github') });
+    this.walls.push({ course: this, isWall: true, los: findLos(this.los, 'archive') });
   }
 
   publish(path: string): void {

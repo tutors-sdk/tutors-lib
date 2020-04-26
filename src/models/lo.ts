@@ -14,6 +14,7 @@ export abstract class LearningObject {
   folder?: string;
   parentFolder?: string;
   objectivesMd?: string;
+  objectives?: string;
   hide = false;
   properties?: Properties;
 
