@@ -1,6 +1,6 @@
 import { LearningObject } from './lo';
 import { publishLos, reapLos } from '../utils/loutils';
-import fs from 'fs';
+import * as fs from 'fs';
 import * as sh from 'shelljs';
 import { copyFileToFolder } from '../utils/futils';
 

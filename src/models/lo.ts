@@ -1,7 +1,7 @@
 import { Properties } from '../utils/properties';
-import path from 'path';
+import * as path from 'path';
 import { getHeader, getImageFile, getParentFolder, readYaml, withoutHeader } from '../utils/futils';
-import fs from 'fs';
+import * as fs from 'fs';
 
 export abstract class LearningObject {
   parent?: LearningObject;

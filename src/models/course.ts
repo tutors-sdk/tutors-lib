@@ -1,7 +1,7 @@
 import { LearningObject } from './lo';
 import { Properties } from '../utils/properties';
 import { publishLos, reapLos } from '../utils/loutils';
-import fs from 'fs';
+import * as fs from 'fs';
 import { copyFileToFolder, getCurrentDirectory, readEnrollment, writeFile } from '../utils/futils';
 import { Topic } from './topic';
 const version = require('../../package.json').version;
