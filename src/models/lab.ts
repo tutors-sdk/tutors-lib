@@ -1,7 +1,7 @@
 import { LearningObject } from './lo';
-import fs from 'fs';
+import * as fs from 'fs';
 import { copyFolder, getDirectories, getImageFile, initPath, readFile, readWholeFile } from '../utils/futils';
-import path from 'path';
+import * as path from 'path';
 import * as sh from 'shelljs';
 
 const glob = require('glob');
@@ -10,6 +10,7 @@ export class Chapter {
   title = '';
   shortTitle = '';
   contentMd = '';
+  content = '';
   route = '';
 }
 
@@ -39,6 +40,7 @@ export class Lab extends LearningObject {
         shortTitle: chapterName.substring(chapterName.indexOf('.') + 1, chapterName.lastIndexOf('.')),
         contentMd: wholeFile,
         route: '',
+        content : ''
       };
       chapters.push(chapter);
     });

@@ -94,10 +94,11 @@ export function findTopLos(los: Array<LearningObject>, lotype: string): Learning
 export function findLos(los: Array<LearningObject>, lotype: string): LearningObject[] {
   let result: LearningObject[] = [];
   los.forEach((lo) => {
-    if (lo.lotype === lotype && lo.hasOwnProperty('properties') && !lo.properties!!.disable) {
+    if (lo.lotype === lotype) {
       result.push(lo);
-    }
-    if (lo instanceof Topic) {
+    } else if (lo instanceof Topic) {
+      result = result.concat(findLos(lo.los, lotype));
+    } else if (lo instanceof Unit) {
       result = result.concat(findLos(lo.los, lotype));
     }
   });

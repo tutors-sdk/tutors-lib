@@ -1,7 +1,7 @@
 import { LearningObject } from './lo';
 import { readFile } from '../utils/futils';
 import { copyResource } from '../utils/loutils';
-import fs from 'fs';
+import * as fs from 'fs';
 
 export abstract class WebLearningObject extends LearningObject {
   protected constructor(parent: LearningObject, resourceId: string) {
