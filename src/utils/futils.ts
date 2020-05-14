@@ -67,10 +67,6 @@ export function copyFileToFolder(src: string, dest: string): void {
   }
 }
 
-export function getCurrentDirectory(): string {
-  return sh.pwd();
-}
-
 export function initPath(path: string): void {
   sh.mkdir('-p', path);
 }

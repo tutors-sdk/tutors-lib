@@ -2,7 +2,7 @@ import { LearningObject } from './lo';
 import { Properties } from '../utils/properties';
 import { findLos, publishLos, reapLos } from '../utils/loutils';
 import * as fs from 'fs';
-import { copyFileToFolder, getCurrentDirectory, readEnrollment, writeFile } from '../utils/futils';
+import { copyFileToFolder, readEnrollment } from '../utils/futils';
 import { Topic } from './topic';
 const version = require('../../package.json').version;
 
@@ -57,9 +57,6 @@ export class Course extends LearningObject {
 
   publish(path: string): void {
     console.log(':: ', this.title);
-    if (path.charAt(0) !== '/' && path.charAt(1) !== ':') {
-      path = getCurrentDirectory() + '/' + path;
-    }
     copyFileToFolder(this.img!, path);
     publishLos(path, this.los);
   }
