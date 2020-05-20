@@ -1,12 +1,10 @@
-tutors-js
-=====
+# tutors-lib
 
-A generator for the tutors reader:
+A course parser for the tutors system. It is used by these client projects:
 
-- <https://github.com/edeleastar/tutors-au>
+- <https://github.com/tutors-sdk/tutors-json>
+- <https://github.com/tutors-sdk/tutors-html>
 
-This npm command line applcation will generate a course repository which, when deployed publiclly, will render the course interactively:
+The design of the system is discussed here:
 
-Example:
-
-- <https://tutors.design/course/wit-hdip-comp-sci-2018.github.io/ent-web/>
+- <https://aurelia.io/blog/2019/09/03/case-study-tutors>
