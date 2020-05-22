@@ -26,6 +26,9 @@ export abstract class DiscreteLearningObject extends LearningObject {
     if (fs.existsSync('videoid')) {
       this.videoid = readFile('videoid');
     }
+    if (fs.existsSync('videolink')) {
+      this.videolink = readFile('videolink');
+    }
   }
 
   publish(path: string): void {

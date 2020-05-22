@@ -10,6 +10,7 @@ export abstract class LearningObject {
   title?: string;
   img?: string;
   videoid?: string;
+  videolink?: string;
   link?: string;
   folder?: string;
   parentFolder?: string;

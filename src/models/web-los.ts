@@ -17,6 +17,9 @@ export class Video extends WebLearningObject {
     super.reap('video');
     this.lotype = 'video';
     this.videoid = readFile('videoid');
+    if (fs.existsSync('videolink')) {
+      this.videolink = readFile('videolink');
+    }
   }
 
   publish(path: string): void {
@@ -30,6 +33,9 @@ export class PanelVideo extends WebLearningObject {
     super.reap('panelvideo');
     this.lotype = 'panelvideo';
     this.videoid = readFile('videoid');
+    if (fs.existsSync('videolink')) {
+      this.videolink = readFile('videolink');
+    }
   }
 
   publish(path: string): void {
@@ -48,6 +54,9 @@ export class Git extends WebLearningObject {
     if (fs.existsSync('videoid')) {
       this.videoid = readFile('videoid');
     }
+    if (fs.existsSync('videolink')) {
+      this.videolink = readFile('videolink');
+    }
   }
 
   publish(path: string): void {
@@ -64,6 +73,9 @@ export class Web extends WebLearningObject {
     this.lotype = 'web';
     if (fs.existsSync('videoid')) {
       this.videoid = readFile('videoid');
+    }
+    if (fs.existsSync('videolink')) {
+      this.videolink = readFile('videolink');
     }
   }
 
