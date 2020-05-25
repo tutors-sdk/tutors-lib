@@ -20,11 +20,13 @@ export function readVideoIds(): VideoIdentifiers {
     const entries = fs.readFileSync('videoid').toString().split('\n');
 
     entries.forEach((entry) => {
-      if (entry.includes('=')) {
-        videos.videoIds.push(parseProperty(entry));
-      } else {
-        videos.videoid = entry;
-        videos.videoIds.push({ service: 'youtube', id: entry });
+      if (entry !== '') {
+        if (entry.includes('=')) {
+          videos.videoIds.push(parseProperty(entry));
+        } else {
+          videos.videoid = entry;
+          videos.videoIds.push({ service: 'youtube', id: entry });
+        }
       }
     });
   }
