@@ -23,12 +23,12 @@ export abstract class DiscreteLearningObject extends LearningObject {
       super.reap(resourceName);
       this.link = resourceList[0];
     }
-    if (fs.existsSync('videoid')) {
-      this.videoid = readFile('videoid');
-    }
-    if (fs.existsSync('videolink')) {
-      this.videolink = readFile('videolink');
-    }
+    // if (fs.existsSync('videoid')) {
+    //   this.videoid = readFile('videoid');
+    // }
+    // if (fs.existsSync('videolink')) {
+    //   this.videolink = readFile('videolink');
+    // }
   }
 
   publish(path: string): void {

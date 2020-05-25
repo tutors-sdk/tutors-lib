@@ -2,6 +2,7 @@ import { Properties } from '../utils/properties';
 import * as path from 'path';
 import { getHeader, getImageFile, getParentFolder, readYaml, withoutHeader } from '../utils/futils';
 import * as fs from 'fs';
+import { readVideoIds, VideoIdentifiers } from '../utils/videoutils';
 
 export abstract class LearningObject {
   parent?: LearningObject;
@@ -10,7 +11,7 @@ export abstract class LearningObject {
   title?: string;
   img?: string;
   videoid?: string;
-  videolink?: string;
+  videoids?: VideoIdentifiers;
   link?: string;
   folder?: string;
   parentFolder?: string;
@@ -41,6 +42,8 @@ export abstract class LearningObject {
     } else {
       this.title = pattern;
     }
+    this.videoids = readVideoIds();
+    this.videoid = this.videoids.videoid;
   }
 
   abstract publish(path: string): void;
