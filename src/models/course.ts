@@ -2,7 +2,7 @@ import { LearningObject } from './lo';
 import { Properties } from '../utils/properties';
 import { findLos, publishLos, reapLos } from '../utils/loutils';
 import * as fs from 'fs';
-import { copyFileToFolder, readEnrollment } from '../utils/futils';
+import { copyFileToFolder, readCalendar, readEnrollment } from '../utils/futils';
 import { Topic } from './topic';
 const version = require('../../package.json').version;
 
@@ -14,6 +14,7 @@ interface LoWall {
 
 export class Course extends LearningObject {
   enrollment?: Properties;
+  calendar?: Properties;
   los: Array<LearningObject> = [];
   walls: LoWall[] = [];
 
@@ -45,6 +46,12 @@ export class Course extends LearningObject {
       this.enrollment = readEnrollment('enrollment.yaml');
       if (this.enrollment) {
         console.log(`Enrolment file detected with ${this.enrollment.students.length} students`);
+      }
+    }
+    if (fs.existsSync('calendar.yaml')) {
+      this.calendar = readCalendar('calendar.yaml');
+      if (this.enrollment) {
+        console.log(`Calendar file detected.`);
       }
     }
     this.walls.push({ course: this, isWall: true, los: findLos(this.los, 'talk') });
